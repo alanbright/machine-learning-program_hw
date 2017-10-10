@@ -78,9 +78,12 @@ delta3 = a3 - newY'; % (10,5000)
 % now we got (Theta2' * delta3) as (26,10) * (10,5000) = (26,5000)
 delta2 = (Theta2' * delta3) .* (a2 .* (1- a2));
 % remove delta_2 of zero index(first row) (26, 5000) -> (25, 5000)
-% delta2'(m:end) , it will remove first column, so we need to transform it
+% delta2'(m+1:end) , it will remove first column as a vector, so we need to transform it
 % coz we want to remove the first row
 delta2 = reshape(delta2'(m+1 :end) ,m ,hidden_layer_size)'; % (25, 5000)
+
+% or you can use delta2 = delta2(2:size(delta2,2), :) , it will return the same matrix as you desire
+
 Theta1_grad = (1/m)* delta2 * a1';% (25,5000) * (5000,401) = (25,401)
 Theta2_grad = (1/m)* delta3 * a2';% (10,5000) * (5000,26) = (10,26)
 
