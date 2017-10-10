@@ -14,3 +14,6 @@ A2 = [ones(m, 1) A2]; % 5000 x 26
 
 [Ans, AnsIndex] = max(A2 * Theta2' , [] ,2);
 p = AnsIndex;
+
+% one line solution
+[Ans, p ] = max(sigmoid( [ones(m, 1) sigmoid([ones(m, 1) X] * Theta1')] * Theta2')) , [] ,2);
