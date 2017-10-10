@@ -8,4 +8,4 @@ theta = theta - (alpha /m) * (( X * theta - y )' * X)';
 theta = theta - (alpha /m) * X' * ( X * theta - y );
 
 % feature normalize
-X_norm = (X - mean(X)) ./ std(X)
+X_norm = (X - mean(X)) ./ std(X);
