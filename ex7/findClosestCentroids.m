@@ -26,6 +26,7 @@ end
 n = size(X,2)
 sumM = zeros(K*n, K);
 newX = [];
+
 for i = 1:K
   for j = 1:n
     sumM((i-1)*n +j ,i) = 1;
@@ -33,6 +34,14 @@ for i = 1:K
   % build the new X
   newX = [newX , X];
 end
+
+% or you can implement like this one, too.
+for i = 1:K
+  sumM((i-1)*n+1:i*n, i) = ones(n,1)
+  newX = [newX , X]
+end
+
+
 sumM;
 
 % compute the distance at one operation.
